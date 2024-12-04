@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autolainaus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .button {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tervetuloa Autolainaukseen</h1>
+    <a href="{% url 'lainaus' %}" class="button">Lainaus</a>
+    <a href="{% url 'palautus' %}" class="button">Palautus</a>
+    <a href="{% url 'hallinto' %}" class="button">Hallinto</a>
+</body>
+</html>

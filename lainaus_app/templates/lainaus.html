@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tee Lainaa</title>
+    <style>
+        /* Estilo del formulario */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { text-align: center; margin-top: 20px; color: #333; }
+        .container { width: 90%; max-width: 800px; margin: 20px auto; }
+        .form-section { background: #ffffff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin-bottom: 20px; }
+        .form-section label { font-weight: bold; }
+        .form-section input, .form-section select { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .error { color: red; font-size: 0.9em; margin-bottom: 10px; }
+        .buttons { text-align: center; margin-top: 20px; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .btn-primary { background-color: #007bff; color: white; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <h1>Tee Lainaa</h1>
+    <form method="post" class="container">
+        {% csrf_token %}
+        
+        <!-- Etunimi (primer nombre) -->
+        <div class="form-section">
+            <label for="etunimi">Etunimi</label>
+            <input type="text" id="etunimi" name="etunimi" placeholder="Etunimi" value="{{ form.etunimi.value }}" required>
+            {% if form.etunimi.errors %}
+                <p class="error">{{ form.etunimi.errors }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Sukunimi (apellido) -->
+        <div class="form-section">
+            <label for="sukunimi">Sukunimi</label>
+            <input type="text" id="sukunimi" name="sukunimi" placeholder="Sukunimi" value="{{ form.sukunimi.value }}" required>
+            {% if form.sukunimi.errors %}
+                <p class="error">{{ form.sukunimi.errors }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Puhelinnumero (número de teléfono) -->
+        <div class="form-section">
+            <label for="puhelinnumero">Puhelinnumero</label>
+            <input type="text" id="puhelinnumero" name="puhelinnumero" placeholder="+358123456789" value="{{ form.puhelinnumero.value }}" required>
+            {% if form.puhelinnumero.errors %}
+                <p class="error">{{ form.puhelinnumero.errors }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Auton valinta (selección del auto) -->
+        <div class="form-section">
+            {{ form.auto.label_tag }} {{ form.auto }}
+        </div>
+
+        <!-- Lainaus ja palautus päivämäärät (fechas de préstamo y devolución) -->
+        <div class="form-section">
+            {{ form.lainaus_päivä.label_tag }} {{ form.lainaus_päivä }}<br>
+            {{ form.palautus_päivä.label_tag }} {{ form.palautus_päivä }}
+        </div>
+
+        <!-- Toimintonapit (botones de acción) -->
+        <div class="buttons">
+            <button type="submit" class="btn-primary">Tee Lainaa ja Tulosta</button>
+            <button type="reset" class="btn-danger">Tyhjennä</button>
+        </div>
+    </form>
+</body>
+</html>

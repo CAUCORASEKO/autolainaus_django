@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lainaus_app',
+    'barcode_generator',
 ]
 
 MIDDLEWARE = [
@@ -54,8 +56,8 @@ ROOT_URLCONF = 'autolainaus_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / "templates"], 
+        'APP_DIRS': True,  
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -66,6 +68,9 @@ TEMPLATES = [
         },
     },
 ]
+
+
+
 
 WSGI_APPLICATION = 'autolainaus_project.wsgi.application'
 

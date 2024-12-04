@@ -15,8 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  # Admin-sivun polku
+    path('', include('lainaus_app.urls')),  # Sisällytä lainaus_app -sovelluksen URL:t
 ]
+
